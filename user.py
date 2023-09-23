@@ -144,40 +144,11 @@ def scale_up_img(message_index = 0):
         time.sleep(1)                      
 
 if __name__ == '__main__':
-    # import simplejson as json
+    # using for testing
+    import simplejson as json
     
-    # res = get_messages()
-    # json_data = res.json()
+    res = get_messages()
+    json_data = res.json()
     
-    # with open('discord.json', 'w') as f:
-    #     json.dump(json_data, f, indent=4)
-    
-    # headers = {
-    #     'Authorization': discord_token,
-    #     'Accept': '*/*',
-    #     'User-Agent': 'Mozilla/5.0'
-    # }
-    
-    # payload = {
-    #     "type": 3,
-    #     "guild_id": server_id,
-    #     "channel_id": channel_id,
-    #     "message_flags": 0,
-    #     "message_id": "1154984960625758229",
-    #     "application_id": "936929561302675456",
-    #     "session_id": 12345,
-    #     "data": {
-    #         "component_type": 2,
-    #         "custom_id": "MJ::JOB::upsample::4::3532941b-c4fb-4c87-ae2b-676ef51d4d08"
-    #     }
-    # }
-    
-    # response = requests.post(
-    #     'https://discord.com/api/v10/interactions', 
-    #     headers=headers, 
-    #     json=payload
-    # )
-    
-    # print(response)
-    s = "Image #4 <@1089709883701596220>"
-    print(len(s))
+    with open('discord.json', 'w') as f:
+        json.dump(json_data, f, indent=4)
