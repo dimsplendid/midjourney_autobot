@@ -34,3 +34,13 @@ SERVER_ID=your_server_id
 ```
 
 5. Create an `images` foler in the root directory
+
+## Usage
+
+1. Modify the prompts.txt file with your own prompts
+2. Run the script
+
+```bash
+python bot.py
+```
+3. In the chat room, type `start` to start auto midjourney:D
