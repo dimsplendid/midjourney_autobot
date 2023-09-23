@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a simple script to automate the process of midjourney.
+This is a simple script to automate the process of midjourney. This using the bot to read the prompts and downloads all images all in once.
 
 ## Setup
 
