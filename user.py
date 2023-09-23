@@ -20,7 +20,7 @@ def prompt_to_discord(prompt):
     
     # Check the payload format by sending a request to the discord API
     # res = requests.get(
-    #     r'https://discord.com/api/v10/channels/1151415904429678615/application-commands/search?type=1&include_applications=true&query=imagine',
+    #     f'https://discord.com/api/v10/channels/{channel_id}/application-commands/search?type=1&include_applications=true&query=imagine',
     #     headers = headers
     # )
     # print(res)
@@ -140,7 +140,7 @@ def scale_up_img(message_index = 0):
             headers=headers, 
             json=payload
         )
-        print(response)
+        # print(response)
         time.sleep(1)                      
 
 if __name__ == '__main__':

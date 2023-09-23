@@ -17,15 +17,16 @@ class MyClient(discord.Client):
         print(f'Logged on as {self.user}!')
 
     async def on_message(self, message):
-        print(f'Message from {message.author}: {message.content}')
+        # print(f'Message from {message.author}: {message.content}')
         if message.content == 'start' or message.content == 'download complete':
             global prompt_counter
-            await message.reply('Starting automation, do not type anything in the channel')
             if prompt_counter < len(prompts):
+                await message.reply('Starting automation, do not type anything in the channel')
                 user.prompt_to_discord(prompts[prompt_counter])
                 prompt_counter += 1
             else:
                 await message.reply('All prompts are completed, closing the bot')
+                print('All prompts are completed, closing the bot')
                 await self.close()
             
         if message.content[-6:] == '(fast)':
