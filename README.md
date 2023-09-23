@@ -38,7 +38,7 @@ USER_ID=your_user_id
 
 ## Usage
 
-1. Modify the `prompts.txt` file with your own prompts
+1. Modify the `prompts.txt` file with your own prompts(each line is separate prompt)
 2. Run the script
 
 ```bash
