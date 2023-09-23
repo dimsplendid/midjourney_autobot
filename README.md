@@ -31,6 +31,7 @@ BOT_TOKEN=your_bot_token
 DISCORD_TOKEN=your_discord_token
 CHANNEL_ID=your_channel_id
 SERVER_ID=your_server_id
+USER_ID=your_user_id
 ```
 
 5. Create an `images` foler in the root directory
