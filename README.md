@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a simple script to automate the process of midjourney.
+This is a simple script to automate the process of midjourney. This using the bot to read the prompts and downloads all images all in once.
 
 ## Setup
 
@@ -31,13 +31,14 @@ BOT_TOKEN=your_bot_token
 DISCORD_TOKEN=your_discord_token
 CHANNEL_ID=your_channel_id
 SERVER_ID=your_server_id
+USER_ID=your_user_id
 ```
 
 5. Create an `images` foler in the root directory
 
 ## Usage
 
-1. Modify the prompts.txt file with your own prompts
+1. Modify the `prompts.txt` file with your own prompts
 2. Run the script
 
 ```bash
