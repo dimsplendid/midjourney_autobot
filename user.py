@@ -99,7 +99,7 @@ def get_messages():
     
     return response
 
-def download_last_img(path: Path, index=0):
+def download_image(path: Path, index=0):
     res = get_messages()
     json_data = res.json()
     img_url = json_data[index]["attachments"][0]["url"]
@@ -107,6 +107,77 @@ def download_last_img(path: Path, index=0):
     img = requests.get(img_url).content
     with open(path / img_name, 'wb') as f:
         f.write(img)
+        
+def scale_up_img(message_index = 0):
+    headers = {
+        'Authorization': discord_token,
+        'Accept': '*/*',
+        'User-Agent': 'Mozilla/5.0'
+    }
+    
+    messages = get_messages().json()
+    message_id = messages[message_index]["id"]
+    
+    for i in range(4): 
+        component = messages[message_index]["components"][0]["components"][i]
+        custom_id = component["custom_id"]
+        payload = {
+            "type": 3,
+            "guild_id": server_id,
+            "channel_id": channel_id,
+            "message_flags": 0,
+            "message_id": message_id,
+            "application_id": "936929561302675456",
+            "session_id": 12345,
+            "data": {
+                "component_type": 2,
+                "custom_id": custom_id
+            }
+        }
+        
+        response = requests.post(
+            'https://discord.com/api/v10/interactions', 
+            headers=headers, 
+            json=payload
+        )
+        print(response)
+        time.sleep(1)                      
 
 if __name__ == '__main__':
-    download_last_img(Path('images'))
+    # import simplejson as json
+    
+    # res = get_messages()
+    # json_data = res.json()
+    
+    # with open('discord.json', 'w') as f:
+    #     json.dump(json_data, f, indent=4)
+    
+    # headers = {
+    #     'Authorization': discord_token,
+    #     'Accept': '*/*',
+    #     'User-Agent': 'Mozilla/5.0'
+    # }
+    
+    # payload = {
+    #     "type": 3,
+    #     "guild_id": server_id,
+    #     "channel_id": channel_id,
+    #     "message_flags": 0,
+    #     "message_id": "1154984960625758229",
+    #     "application_id": "936929561302675456",
+    #     "session_id": 12345,
+    #     "data": {
+    #         "component_type": 2,
+    #         "custom_id": "MJ::JOB::upsample::4::3532941b-c4fb-4c87-ae2b-676ef51d4d08"
+    #     }
+    # }
+    
+    # response = requests.post(
+    #     'https://discord.com/api/v10/interactions', 
+    #     headers=headers, 
+    #     json=payload
+    # )
+    
+    # print(response)
+    s = "Image #4 <@1089709883701596220>"
+    print(len(s))

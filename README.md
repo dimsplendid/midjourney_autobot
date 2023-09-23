@@ -24,8 +24,13 @@ conda activate midjourney_test
 pip install -r requirements.txt
 ```
 
-4. create a .env file with the following variables
+4. Create a .env file with the following variables
 
 ```bash
-TOKEN=your_token
+BOT_TOKEN=your_bot_token
+DISCORD_TOKEN=your_discord_token
+CHANNEL_ID=your_channel_id
+SERVER_ID=your_server_id
 ```
+
+5. Create an `images` foler in the root directory

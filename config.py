@@ -26,3 +26,9 @@ if discord_token is None:
     raise ValueError('DISCORD_TOKEN environment variable not found')
 else:
     discord_token = discord_token # just for type hint purposes
+    
+user_id = os.getenv('USER_ID')
+if user_id is None:
+    raise ValueError('USER_ID environment variable not found')
+else:
+    user_id = user_id
