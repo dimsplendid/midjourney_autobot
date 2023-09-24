@@ -22,7 +22,9 @@ class MyClient(discord.Client):
             global prompt_counter
             if prompt_counter < len(prompts):
                 await message.reply('Starting automation, do not type anything in the channel')
-                user.prompt_to_discord(prompts[prompt_counter])
+                prompt = prompts[prompt_counter]
+                prompt += ' --niji 5' # anime style
+                user.prompt_to_discord(prompt)
                 prompt_counter += 1
             else:
                 await message.reply('All prompts are completed, closing the bot')
