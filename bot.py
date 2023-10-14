@@ -3,14 +3,8 @@ from pathlib import Path
 import discord
 import logging
 
-from config import bot_token, user_id
+from config import user_id
 import user
-
-# load all prompts from prompts.txt file
-with open('prompts.txt', 'r') as f:
-    prompts = f.readlines()
-
-prompt_counter = 0
 
 class MyClient(discord.Client):
     async def on_ready(self):
@@ -23,7 +17,7 @@ class MyClient(discord.Client):
             if prompt_counter < len(prompts):
                 await message.reply('Starting automation, do not type anything in the channel')
                 prompt = prompts[prompt_counter]
-                prompt += ' --niji 5' # anime style
+                # prompt += ' --niji 5' # anime style
                 user.prompt_to_discord(prompt)
                 prompt_counter += 1
             else:
@@ -41,12 +35,20 @@ class MyClient(discord.Client):
                 user.download_image(Path('images'), i+1)
             await message.reply('download complete')
 
-intents = discord.Intents.default()
-intents.message_content = True
-
-client = MyClient(intents=intents)
-
-handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
 
 if __name__ == '__main__':
+    # load all prompts from prompts.txt file
+    from config import bot_token
+    with open('prompts.txt', 'r') as f:
+        prompts = f.readlines()
+
+    prompt_counter = 0
+    
+    intents = discord.Intents.default()
+    intents.message_content = True
+
+    client = MyClient(intents=intents)
+
+    handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
+
     client.run(bot_token, log_handler=handler, log_level=logging.DEBUG)
